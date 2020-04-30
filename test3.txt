@@ -1,0 +1,5 @@
+int x = 3 + 2.2;
+y = 2;
+int z = 'c';
+int m;
+int n = m + 2;

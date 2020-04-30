@@ -1,0 +1,102 @@
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+x1		 int		 True		
+
+
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+x1		 int		 True		
+y1		 int		 True		
+
+
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+x1		 int		 True		
+y1		 int		 True		
+z1		 int		 True		
+
+
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+x1		 int		 True		
+y1		 int		 True		
+z1		 int		 True		
+mass		 int		 False		
+
+
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+x1		 int		 True		
+y1		 int		 True		
+z1		 int		 True		
+mass		 int		 True		
+
+
+
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+x1		 int		 True		
+y1		 int		 True		
+z1		 int		 True		
+mass		 int		 True		
+m		 const float		 True		
+
+
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+x1		 int		 True		
+y1		 int		 True		
+z1		 int		 True		
+mass		 int		 True		
+m		 const float		 True		
+n		 float		 True		
+
+
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+x1		 int		 True		
+y1		 int		 True		
+z1		 int		 True		
+mass		 int		 True		
+m		 const float		 True		
+n		 float		 True		
+o		 float		 True		
+
+
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+x1		 int		 True		
+y1		 int		 True		
+z1		 int		 True		
+mass		 int		 True		
+m		 const float		 True		
+n		 float		 True		
+o		 float		 True		
+k		 char		 True		
+

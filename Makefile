@@ -9,4 +9,4 @@ clean:
 all: clean build
 
 run:
-	./bas.exe
+	./bas.exe > outputTest.txt

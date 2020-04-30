@@ -1,0 +1,21 @@
+## 	 Generated Code 	 ##
+ MOV R0, 9.800000
+ MOV initial , R0
+ MOV R0, 10.300000
+ MOV gain , R0
+ MOV R0, 7.700000
+ MOV loses , R0
+ MOV R0, initial
+ MOV R1, gain
+ ADD R2,R0,R1
+ MOV total , R2
+ MOV R0, total
+ MOV R1, loses
+ SUB R2,R0,R1
+ MOV total , R2
+ MOV R0, 'T'
+ MOV bool , R0
+ MOV R0, 3
+ MOV R1, 7
+ ADD R2,R0,R1
+ MOV x , R2

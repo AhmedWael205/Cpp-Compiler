@@ -27,6 +27,7 @@ extern FILE *yyin;
 
 FILE *assembly;
 FILE *testFile;
+FILE *errorFile;
      
     
 %}
@@ -59,7 +60,7 @@ program:
 
 sentence:
         assignment   
-        |{declaring = true;} declaration 
+        |{declaring = true;} declaration {declaring = false;}
         ;
 
 declaration:
@@ -73,17 +74,20 @@ assignment:
         expr { rhsType = currentType;}
         SCOLON { 
                 if (rhsType != -9) {
-                        if(declaring) { declare($1,currentDataType);lhsType = currentDataType;declaring = false;}
+                        if(declaring)
+                                if (rhsType == currentDataType || rhsType == currentDataType + 3 || rhsType == currentDataType -3)
+                                { 
+                                        declare($1,currentDataType);
+                                        lhsType = currentDataType;
+                                }
                         else {lhsType = getType($1);}
                         if (assign($1, lhsType, rhsType)) {
                                 fprintf(assembly,"\n MOV %s , R%d", $1 ,regCount);
                                 setVariable($1);
-                                } 
-                } else {
-                        yyerror("Error in variable ");
-                        yyerror($1);
-                        yyerror("\n");
-                }
+                                }
+                        else{yyerror("Error in assigning variable \n"); }
+
+                } else {yyerror("Error in assigning variable \n");}
         }
         ;
 
@@ -99,11 +103,11 @@ expr:
         expr_element PLUS {firstOperandType = currentType; firstReg = regCount++;} expr_element { if(validateAssign(firstOperandType, currentType,true)) {
                                                                                                         secondReg = regCount++; 
                                                                                                         fprintf(assembly,"\n ADD R%d,R%d,R%d",regCount,firstReg,secondReg );}
-                                                                                                        else currentType = -9;}                    
+                                                                                                        else {currentType = -9;}}                    
         | expr_element MINUS {firstOperandType = currentType; firstReg = regCount++;} expr_element { if(validateAssign(firstOperandType, currentType,true)) {
                                                                                                         secondReg = regCount++; 
                                                                                                         fprintf(assembly,"\n SUB R%d,R%d,R%d",regCount,firstReg,secondReg );}
-                                                                                                        else currentType = -9;}     
+                                                                                                        else {currentType = -9;}}     
         | expr_element
         ;
 
@@ -111,7 +115,12 @@ expr_element:
                  INTEGER        { currentType = 0; fprintf(assembly,"\n MOV R%d, %d",regCount, $1);}
                  |FLOAT         { currentType = 1; fprintf(assembly,"\n MOV R%d, %f", regCount,$1 );}
                  |CHARACTER     { currentType = 2; fprintf(assembly,"\n MOV R%d, '%c'",regCount,$1 );}
-                 |IDENTIFIER    { existAndInitialized($1); currentType = getType($1);fprintf(assembly,"\n MOV R%d, %s",regCount, $1);}
+                 |IDENTIFIER    { if(existAndInitialized($1)) {
+                  currentType = getType($1);fprintf(assembly,"\n MOV R%d, %s",regCount, $1);
+                  } else {
+                        currentType = -9;
+                        }  
+                  }
                  ;
 
 
@@ -123,9 +132,7 @@ expr_element:
 bool declare(char *identifier, int type) {
 
         if(addVariable(identifier, type)) return true;
-        yyerror("Error ");
-        yyerror(identifier);
-        yyerror(" is already declared\n");
+        yyerror("Error variable is already declared\n");
         return false;
 
 			
@@ -136,15 +143,11 @@ bool existAndInitialized (char* variableName)
         int x = existandInitialized(variableName);
         if (x == -1) 
         {
-                yyerror("Error ");
-                yyerror(variableName);
-                yyerror(" is not declared \n"); 
+                yyerror("Error variable is not declared \n"); 
                 return false; 
         } else if (x == 0)
         {
-                yyerror("Error ");
-                yyerror(variableName);
-                yyerror(" is not initialized\n");
+                yyerror("Error variable is not initialized\n");
                 return false;
         }
         return true;
@@ -158,17 +161,13 @@ bool validateAssign(int x, int y,bool op)
         if(op)
                 if (x == 2 || x == 5 || y == 2 || y == 5)
                 {
-                        yyerror("Error mathematical operation cant be applied on boolean type\n");
+                        yyerror("Error mathematical operation cant be applied on char type\n");
                         return false;
                 }
-        if (y == -9) return false;
-	if (x != y && x != y + 3 && x != y -3)
+        if (x == -9 || y == -9) return false;
+	if (x != y && x != y + 3 && x != y - 3)
         {
-                yyerror("Error type mismatch: ");
-                yyerror(getTypeName(x));
-                yyerror(" is not comptable with ");
-                yyerror(getTypeName(y));
-                yyerror("\n");
+                yyerror("Error type mismatch\n");
                 return false;
         }
         return true;
@@ -178,29 +177,31 @@ bool assign(char* variableName, int lhsType, int rhsType)
 {
 	int x = existandInitialized(variableName);
 	if(x == -1) {
-                yyerror("Error ");
-                yyerror(variableName);
-                yyerror(" is not declared \n"); 
+                yyerror("Error variable is not declared \n"); 
                 return false;
         }
 
 	if(!validateAssign(lhsType, rhsType,false)) return false; 
 
 	if(lhsType >=3 && x == 1) {
-                yyerror("Error ");
-                yyerror("const ");
-                yyerror(variableName);
-                yyerror(" is already initialized\n");
+                yyerror("Error const variable is already initialized\n");
                 return false;
         }
         return true;
 }
 
 void yyerror(char *s) {
-        fprintf(stderr, "%s", s);
+        fprintf(errorFile, "%s", s);
 }
 
 int main(void) {
+        errorFile= fopen("errortest.txt", "w");
+	
+	if (errorFile == NULL)
+        {
+                printf("Error opening errortest.txt file!\n");
+                exit(1);
+        }
         assembly= fopen("AssemblyCode.txt", "w");
 	
 	if (assembly == NULL)
@@ -211,7 +212,7 @@ int main(void) {
 
 	fprintf(assembly,"## \t Generated Code \t ##");
 
-        testFile = fopen("test.txt", "r");
+        testFile = fopen("test3.txt", "r");
         if (testFile == NULL)
         {
                 printf("Error opening test file!\n");

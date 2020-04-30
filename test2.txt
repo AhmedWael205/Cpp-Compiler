@@ -1,0 +1,13 @@
+const float initial = 9.8;
+float gain;
+float loses;
+
+gain = 10.3;
+loses = 7.7;
+
+float total = initial + gain;
+total = total - loses;
+
+const char bool = 'T';
+int x = 3 + 7;
+int z;

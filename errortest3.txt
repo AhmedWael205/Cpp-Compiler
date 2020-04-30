@@ -1,0 +1,8 @@
+Error type mismatch
+Error in assigning variable 
+Error variable is not declared 
+Error in assigning variable 
+Error variable is not declared 
+Error in assigning variable 
+Error variable is not initialized
+Error in assigning variable 

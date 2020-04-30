@@ -1,0 +1,107 @@
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+initial		 const float		 True		
+
+
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+initial		 const float		 True		
+gain		 float		 False		
+
+
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+initial		 const float		 True		
+gain		 float		 False		
+loses		 float		 False		
+
+
+
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+initial		 const float		 True		
+gain		 float		 True		
+loses		 float		 False		
+
+
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+initial		 const float		 True		
+gain		 float		 True		
+loses		 float		 True		
+
+
+
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+initial		 const float		 True		
+gain		 float		 True		
+loses		 float		 True		
+total		 float		 True		
+
+
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+initial		 const float		 True		
+gain		 float		 True		
+loses		 float		 True		
+total		 float		 True		
+
+
+
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+initial		 const float		 True		
+gain		 float		 True		
+loses		 float		 True		
+total		 float		 True		
+bool		 const char		 True		
+
+
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+initial		 const float		 True		
+gain		 float		 True		
+loses		 float		 True		
+total		 float		 True		
+bool		 const char		 True		
+x		 int		 True		
+
+
+Added Successfully 
+
+-------------------PRINTING SYMBOL TABLE--------------------
+Variable	 Type 		Has Value 
+------------------------------------------------------------
+initial		 const float		 True		
+gain		 float		 True		
+loses		 float		 True		
+total		 float		 True		
+bool		 const char		 True		
+x		 int		 True		
+z		 int		 False		
+
