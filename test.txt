@@ -1,0 +1,10 @@
+int x1 = 3;
+int y1 = 5 + 6;
+int z1 = x1 - y1;
+int mass;
+mass = z1 - 1;
+
+const float m = 3.3;
+float n = 2.2;
+float o = m - n;
+char k = 'c';

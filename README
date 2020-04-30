@@ -1,7 +1,0 @@
-commands to run :
-
-1) bison yacc.y -d
-2) flex lex.l
-3) gcc yacc.tab.c lex.yy.c
-4) ./a.out
-
